@@ -46,6 +46,12 @@ public class loginPage {
     @FindBy(xpath = "//div[@class='signup-form']//button")
     public WebElement signupButton;
 
+    @FindBy(xpath = "//input[@id='id_gender1']")
+    public WebElement MrButton;
+
+    @FindBy(xpath = "//input[@id='id_gender2']")
+    public WebElement MrsButton;
+
 
     public int RandomTitleSelection(){
         LocalDate today = LocalDate.now();
@@ -69,6 +75,17 @@ public class loginPage {
         }else {
             throw new Exception();
         }
+    }
+
+    public void ClickTitle() throws InterruptedException {
+        wait.until(ExpectedConditions.visibilityOf(MrButton));
+        if(RandomTitleSelection()==1){
+            common.Click(MrButton);
+            Thread.sleep(2000);
+        }else {
+            common.Click(MrsButton);
+        }
+        System.out.println(RandomTitleSelection());
     }
 
 

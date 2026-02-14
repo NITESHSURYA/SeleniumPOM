@@ -18,6 +18,6 @@ public class LoginTests extends BaseSetup {
     @Test
     public void TC01() throws Exception {
         ls.signup();
-
+        ls.ClickTitle();
     }
 }
