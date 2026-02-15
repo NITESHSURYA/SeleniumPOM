@@ -19,5 +19,9 @@ public class LoginTests extends BaseSetup {
     public void TC01() throws Exception {
         ls.signup();
         ls.ClickTitle();
+        ls.EnterDetails();
+        ls.SubmitDetails();
+        ls.DeleteAccount();
+
     }
 }

@@ -39,13 +39,15 @@ public abstract class BaseSetup {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.navigate().to("http://automationexercise.com");
+
     }
 
     @After
-    public  void tearDown() {
+    public void tearDown() {
         if (driver != null) {
             driver.quit();
         }
     }
+
 
 }
