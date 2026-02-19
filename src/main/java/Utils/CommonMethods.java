@@ -99,4 +99,27 @@ public class CommonMethods {
             throw new RuntimeException("Failed to find the text with the xpath"+ e.getMessage());
         }
     }
+
+    public WebElement findElement(By locator) {
+        if(locator == null){
+            throw new IllegalArgumentException("Locator cannot be null");
+        }
+        try {
+            return driver.findElement(locator);
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to find element with locator: " + locator.toString(), e);
+        }
+    }
+
+    public List<WebElement> findElements(By locator) {
+        if(locator == null){
+            throw new IllegalArgumentException("Locator cannot be null");
+        }
+        try {
+            return driver.findElements(locator);
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to find element with locator: " + locator.toString(), e);
+        }
+    }
+
 }
