@@ -118,7 +118,7 @@ public class CommonMethods {
         try {
             return driver.findElements(locator);
         } catch (Exception e) {
-            throw new RuntimeException("Failed to find element with locator: " + locator.toString(), e);
+            throw new RuntimeException("Failed to find elements with locator: " + locator.toString(), e);
         }
     }
 
