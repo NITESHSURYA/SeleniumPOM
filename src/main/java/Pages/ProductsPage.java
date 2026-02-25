@@ -49,6 +49,7 @@ public class ProductsPage {
     }
 
     public void ProductValidation(){
+        try{
         wait.until(ExpectedConditions.visibilityOf(SearchButton));
         List<WebElement> products=common.findElements(ProductName);
         for (WebElement product : products) {
@@ -56,6 +57,9 @@ public class ProductsPage {
             if (!Name.contains("tshirt") && !Name.contains("T-shirt") && !Name.contains("Tshirt")) {
                 Assert.fail("Product Name does not have Tshirt init");
             }
+        }
+        }catch (Exception e){
+            throw new RuntimeException(e);
         }
     }
 }
