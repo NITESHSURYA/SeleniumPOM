@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -18,7 +19,7 @@ public class ProductsPage {
     CommonMethods common;
 
     public ProductsPage(WebDriver driver) {
-        loginPage.driver = driver;
+        ProductsPage.driver = driver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         this.common = new CommonMethods(driver);
         PageFactory.initElements(driver, this);
@@ -48,11 +49,11 @@ public class ProductsPage {
     }
 
     public void ProductValidation(){
+        wait.until(ExpectedConditions.visibilityOf(SearchButton));
         List<WebElement> products=common.findElements(ProductName);
         for (WebElement product : products) {
             String Name = common.getText(product);
-            String CleanedName = Name.toLowerCase();
-            if (!Name.contains("tshirt") || !Name.contains("T-shirt") || !Name.contains("Tshirt")) {
+            if (!Name.contains("tshirt") && !Name.contains("T-shirt") && !Name.contains("Tshirt")) {
                 Assert.fail("Product Name does not have Tshirt init");
             }
         }
