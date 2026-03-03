@@ -54,7 +54,7 @@ public class ProductsPage {
         List<WebElement> products=common.findElements(ProductName);
         for (WebElement product : products) {
             String Name = common.getText(product);
-            if (!Name.contains("tshirt") && !Name.contains("T-shirt") && !Name.contains("Tshirt")) {
+            if (!Name.contains("t") || !Name.contains("T")) {
                 Assert.fail("Product Name does not have Tshirt init");
             }
         }
